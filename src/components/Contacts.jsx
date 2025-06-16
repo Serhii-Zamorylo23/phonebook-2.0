@@ -1,30 +1,38 @@
-import { Component } from "react";
 import styled from "styled-components";
-const List=styled.ul`
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  list-style: none;
+`;
+const Button=styled.button`
+  transition-duration: 0.3s;
+  margin-left: 10px;
+  &:hover{
+    transition-duration: 0.5s;
+    background: #a02c2c;
+    color: white;
+    border: none;
+  }
 `
-
-class Contacts extends Component {
-
-  contactId=(event)=>{
-    this.props.deleteContact(event.target.id)
+const Contacts = ({deleteContact,userInfo}) => {
+  const contactId=(event)=>{
+    deleteContact(event.target.id)
   }
+  return (
+    <>
+      <List>
+        {userInfo.map((user) => (
+          <li id={user.id}>
+            {user.name} : {user.telephone}
+            <Button id={user.id} onClick={contactId}>
+              Delete
+            </Button>
+          </li>
+        ))}
+      </List>
+    </>
+  );
+};
 
-  render() {
-    return (
-      <>
-        <List>
-          {this.props.userInfo.map((user) => (
-            <li id={user.id}>
-              {user.name} : {user.telephone}
-              <button id={user.id} onClick={this.contactId}>Delete</button>
-            </li>
-          ))}
-        </List>
-      </>
-    );
-  }
-}
-export default Contacts;
+export default Contacts

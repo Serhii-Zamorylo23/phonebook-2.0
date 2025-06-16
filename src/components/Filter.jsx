@@ -1,17 +1,12 @@
-import { Component } from "react";
-
-class Filter extends Component{
-    
-    filterValue=(event)=>{
-        this.props.filter(event.target.value)
+const Filter=({filter})=>{
+    const filterValue=(event)=>{
+        filter(event.target.value)
     }
-    render(){
-        return(
-            <>
-            <p>Find contacts by name</p>
-            <input type="text" onChange={this.filterValue}/>
-            </>
-        )
-    }
+    return(
+        <>
+        <p>Find contacts by name</p>
+        <input type="text" onChange={filterValue}/>
+        </>
+    )
 }
 export default Filter

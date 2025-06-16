@@ -1,4 +1,3 @@
-import { Component } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -15,16 +14,15 @@ const ButtonForm=styled.button`
   border: 2px solid gray;
   border-radius: 5px;
 `
-class NewContact extends Component {
-  addNewContact = (event) => {
+const NewContact=({newContact})=>{
+  const addNewContact = (event) => {
     event.preventDefault();
     let name = event.target.elements.userName.value;
-    let telephone = event.target.elements.number.value
-    this.props.newContact(name,telephone);
+    let telephone = event.target.elements.number.
+    newContact(name,telephone);
   };
-  render() {
-    return (
-      <Form onSubmit={this.addNewContact}>
+  return(
+    <Form onSubmit={addNewContact}>
         <p>Name</p>
         <input name="userName" type="text"></input>
         <p>Number</p>
@@ -37,7 +35,6 @@ class NewContact extends Component {
         />
         <ButtonForm>Add contact</ButtonForm>
       </Form>
-    );
-  }
+  )
 }
 export default NewContact;
