@@ -18,7 +18,7 @@ const NewContact=({newContact})=>{
   const addNewContact = (event) => {
     event.preventDefault();
     let name = event.target.elements.userName.value;
-    let telephone = event.target.elements.number.
+    let telephone = event.target.elements.number.value;
     newContact(name,telephone);
   };
   return(
