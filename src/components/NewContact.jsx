@@ -1,19 +1,56 @@
 import styled from "styled-components";
 
 const Form = styled.form`
-  width: 255px;
-  border: 2px solid black;
-  margin-left: 5px;
-  padding-left: 5px;
-  row-gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 260px;
+  margin: 30px auto;
+  padding: 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 `;
-const ButtonForm=styled.button`
-  background: none;
-  margin-bottom: 10px;
+
+const Label = styled.p`
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+`;
+
+const Input = styled.input`
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #666;
+  }
+`;
+
+const ButtonForm = styled.button`
+  background: #3c82f6;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 0;
   margin-top: 10px;
-  border: 2px solid gray;
-  border-radius: 5px;
-`
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #2a65cc;
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+`;
 const NewContact=({newContact})=>{
   const addNewContact = (event) => {
     event.preventDefault();
@@ -23,10 +60,10 @@ const NewContact=({newContact})=>{
   };
   return(
     <Form onSubmit={addNewContact}>
-        <p>Name</p>
-        <input name="userName" type="text"></input>
-        <p>Number</p>
-        <input
+        <Label>Name</Label>
+        <Input name="userName" type="text"></Input>
+        <Label>Number</Label>
+        <Input
           type="tel"
           name="number"
           pattern="^\+[1-9][0-9]{7,14}$"
